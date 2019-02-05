@@ -42,4 +42,4 @@ else
   echo "deployment ${DEPLOYMENT_NAME} not found - nothing to delete"
 fi
 
-bosh -n clean-up --all
+#bosh -n clean-up --all
