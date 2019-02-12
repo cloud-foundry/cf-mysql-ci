@@ -21,7 +21,7 @@
 
 - type: replace 
   path: /instance_groups/name=verify-cluster-schemas-vm/networks
-  value: [{name: mysql-net}]
+  value: [{name: mysql-ci}]
 
 - type: replace
   path: /instance_groups/name=smoke-tests-vm/networks
