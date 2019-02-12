@@ -16,13 +16,11 @@ WORKSPACE_DIR="$( cd "${MY_DIR}/../../../" && pwd )"
 
 export BOSH_ENVIRONMENT="$(cat "${ENV_TARGET_FILE}")"
 export BOSH_CA_CERT="${WORKSPACE_DIR}/bosh-lite-info/ca-cert"
-
-mysql_ip1=$(bosh -d cf-mysql vms --json | jq -r '.Tables[].Rows[]|select(.instance|contains("mysql"))|select(.az|contains("z1"))|.ips')
-mysql_ip2=$(bosh -d cf-mysql vms --json | jq -r '.Tables[].Rows[]|select(.instance|contains("mysql"))|select(.az|contains("z2"))|.ips')
+chmod 600 ${WORKSPACE_DIR}/bosh-lite-info/jumpbox-private-key
 
 source "${MY_DIR}/scaling-helpers-ondemand"
 
-setup_infrastructure_variables ${mysql_ip1} ${mysql_ip2}
+setup_infrastructure_variables 10.244.7.2 10.244.8.2
 
 pushd "${MY_DIR}"
   bundle install
