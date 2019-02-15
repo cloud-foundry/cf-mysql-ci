@@ -31,8 +31,8 @@ function open_ssh_tunnel_to_bosh_lite() {
   if [[ -z "${SSH_KEY_FILE}" ]]; then
       SSH_KEY_FILE="bosh-key"
       echo "${BOSH_SSH_KEY}" > "${SSH_KEY_FILE}"
-      chmod 600 "${SSH_KEY_FILE}"
   fi
+  chmod 600 "${SSH_KEY_FILE}"
 
   ssh -L ${MYSQL_TUNNEL_PORT}:${MYSQL_VM_IP}:${MYSQL_VM_PORT} \
     -L ${HEALTHCHECK_PORT}:${MYSQL_VM_IP}:${HEALTHCHECK_PORT} \
