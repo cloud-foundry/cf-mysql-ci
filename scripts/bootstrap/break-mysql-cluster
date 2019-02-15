@@ -20,7 +20,7 @@ set_env(){
 stop_all_nodes() {
   pushd "${WORKSPACE_DIR}"
     SSH_KEY_FILE="${WORKSPACE_DIR}/bosh-lite-info/jumpbox-private-key"
-
+    chmod 600 ${SSH_KEY_FILE}
     # stopping mysql on node0 and the arbitrator node
     for MYSQL_NODE in 10.244.7.2 10.244.8.2 10.244.9.2; do
       ssh \

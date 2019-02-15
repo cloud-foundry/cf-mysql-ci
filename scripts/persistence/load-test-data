@@ -20,6 +20,7 @@ MYSQL_VM_PORT=3306
 echo "Targeting remote bosh-lite, starting ssh tunnel..."
 
 SSH_KEY_FILE="${WORKSPACE_DIR}/bosh-lite-info/jumpbox-private-key"
+chmod 600 ${SSH_KEY_FILE}
 
 if [ -z "${BOSH_ENVIRONMENT}" ]; then
   echo "BOSH target file is empty"
